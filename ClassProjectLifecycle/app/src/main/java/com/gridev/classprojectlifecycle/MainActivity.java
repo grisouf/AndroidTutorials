@@ -84,6 +84,13 @@ public class MainActivity extends AppCompatActivity {
         countDownTimer = new CountDownTimer(leftTime, 1000) {
 
             public void onTick(long millisUntilFinished) {
+                if (millisUntilFinished == 0)
+                {
+                    millisUntilFinished = 0;
+                    leftTime = millisUntilFinished;
+                    Log.i(TAG, "onTick: " + millisUntilFinished);
+                }
+
                 leftTime = millisUntilFinished;
                 Log.i(TAG, "onTick: " + millisUntilFinished);
             }
