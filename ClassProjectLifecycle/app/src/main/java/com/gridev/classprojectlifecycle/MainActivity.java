@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String TAG = "I/MainActivity";
 
-    private long leftTime = 60000;
+    private long leftTime = 1000000;
     private CountDownTimer countDownTimer;
 
     @Override
