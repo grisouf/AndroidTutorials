@@ -25,14 +25,14 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnL
     public void onLogin() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.mainContainer, new LoggedFragment()).commit();
+                .replace(R.id.mainContainer, new LoggedFragment()).addToBackStack("logged").commit();
     }
 
     @Override
     public void onRegister() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.mainContainer, new RegisterFragment()).commit();
+                .replace(R.id.mainContainer, new RegisterFragment()).addToBackStack("register").commit();
     }
 
 }
