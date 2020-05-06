@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 
 public class LoginFragment extends Fragment  implements View.OnClickListener {
@@ -17,9 +16,10 @@ public class LoginFragment extends Fragment  implements View.OnClickListener {
     private EditText name;
     private EditText password;
     private Button login;
+    private Button register;
 
     //
-    private OnClickListener listener;
+    private OnLoginFragmentListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,8 +31,10 @@ public class LoginFragment extends Fragment  implements View.OnClickListener {
         name = view.findViewById(R.id.name);
         password = view.findViewById(R.id.password);
         login = view.findViewById(R.id.button);
+        register = view.findViewById(R.id.register);
 
         login.setOnClickListener(this);
+        register.setOnClickListener(this);
 
         return view;
     }
@@ -41,16 +43,23 @@ public class LoginFragment extends Fragment  implements View.OnClickListener {
     public void onClick(View v) {
         //Toast.makeText(requireContext(), name.getText().toString(), Toast.LENGTH_SHORT).show();
         if (listener != null) {
-            listener.onClick();
+            switch (v.getId()) {
+                case R.id.button : listener.onLogin();
+                    break;
+
+                case R.id.register: listener.onRegister();
+                    break;
+            }
         }
     }
 
-    public interface OnClickListener {
-        void onClick();
+    // Inner Interface
+    public interface OnLoginFragmentListener {
+        void onLogin();
+        void onRegister();
     }
 
-    public void setOnclickListener(OnClickListener listener) {
+    public void setOnclickListener(OnLoginFragmentListener listener) {
         this.listener = listener;
     }
-
 }

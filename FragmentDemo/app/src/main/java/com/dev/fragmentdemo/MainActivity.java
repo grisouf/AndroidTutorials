@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity implements LoginFragment.OnClickListener {
+public class MainActivity extends AppCompatActivity implements LoginFragment.OnLoginFragmentListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +21,18 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnC
 
     }
 
-    // this method in Interface that in Login Fragment
     @Override
-    public void onClick() {
+    public void onLogin() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.mainContainer, new LoggedFragment()).commit();
     }
+
+    @Override
+    public void onRegister() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.mainContainer, new RegisterFragment()).commit();
+    }
+
 }
