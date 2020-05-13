@@ -1,6 +1,18 @@
-package com.dev.bodyfatcalculator;
+package com.dev.bodyfatcalculator.model;
 
+
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "tb_profile") // "CREATE DATABASE tb_profile"
 public class Profile {
+
+    @PrimaryKey(autoGenerate = true) // "id PRIMARY KEY IDENTITY(1,1)"
+    public int id;
+
+    // @ColumnInfo(name = "Column Name", index = true)
 
     private int age;
     private double height;
