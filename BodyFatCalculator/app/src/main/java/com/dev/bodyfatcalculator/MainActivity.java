@@ -1,22 +1,19 @@
 package com.dev.bodyfatcalculator;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dev.bodyfatcalculator.model.Profile;
 import com.dev.bodyfatcalculator.viewmodel.CalculatorViewModel;
+import com.dev.bodyfatcalculator.views.CalculatorFragment;
+import com.dev.bodyfatcalculator.views.HistoryFragment;
+import com.dev.bodyfatcalculator.views.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,8 +43,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        HomeFragment home = new HomeFragment();
+        home.setOnHomeFragmentListener(new HomeFragment.OnHomeFragmentListener() {
+            @Override
+            public void onCalculatorClick() {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.mainContainer, new CalculatorFragment())
+                        .addToBackStack("calculator")
+                        .commit();
+
+            }
+
+            @Override
+            public void onHistoryClick() {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.mainContainer, new HistoryFragment())
+                        .addToBackStack("calculator")
+                        .commit();
+            }
+        });
+
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.mainContainer, new CalculatorFragment())
+                .replace(R.id.mainContainer, home)
                 .commit();
 
     }

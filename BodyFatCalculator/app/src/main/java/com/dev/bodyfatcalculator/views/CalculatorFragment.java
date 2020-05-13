@@ -1,4 +1,4 @@
-package com.dev.bodyfatcalculator;
+package com.dev.bodyfatcalculator.views;
 
 import android.os.Bundle;
 
@@ -19,6 +19,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dev.bodyfatcalculator.R;
 import com.dev.bodyfatcalculator.model.Profile;
 import com.dev.bodyfatcalculator.viewmodel.CalculatorViewModel;
 
