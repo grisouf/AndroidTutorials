@@ -16,6 +16,7 @@ import com.dev.bodyfatcalculator.model.Profile;
 import com.dev.bodyfatcalculator.viewmodel.CalculatorViewModel;
 import com.dev.bodyfatcalculator.views.adapter.HistoryAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,10 +40,12 @@ public class HistoryFragment extends Fragment {
                 .AndroidViewModelFactory(requireActivity().getApplication())
                 .create(CalculatorViewModel.class);
 
+        adapter = new HistoryAdapter(requireContext(), R.layout.card_profile, new ArrayList());
+
         model.getList().observe(this, new Observer<List<Profile>>() {
             @Override
             public void onChanged(List<Profile> profiles) {
-                adapter = new HistoryAdapter(requireContext(), R.layout.card_profile, profiles);
+                adapter.addAll(profiles);
             }
         });
 
